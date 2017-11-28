@@ -22,6 +22,21 @@ public class GameOfLife extends javax.swing.JFrame {
         Timer time = new Timer();
         TimerTask task = new TimerTask(){
             public void run(){
+                if(play){
+                    for(int i=0; i<hei; i++){
+                        for(int j=0; j<wid; j++){
+                            nextMove[i][j] = decide(i, j);
+                        }
+                    }
+                    
+                    for(int i=0; i<hei; i++){
+                        for(int j=0; j<wid; j++){
+                            currentMove[i][j] = nextMove[i][j];
+                        }
+                    }
+                    
+                    repain();
+                }
             
             }
         };
@@ -31,7 +46,7 @@ public class GameOfLife extends javax.swing.JFrame {
     }
     
     private int getNeighbors(int i, int j){
-        int num = 0
+        int num = 0;
         if (j > 0){
             if (i > 0)  if (currentMove[i-1][j-1])  num++;
             if (i < hei-1) if (currentMove[i+1][j-1])  num++;
@@ -52,7 +67,8 @@ public class GameOfLife extends javax.swing.JFrame {
 
     public boolean decide(int i, int j){
         int neighbors = getNeighbors(i, j);
-        return true;
+        if(neighbors == 3) return true;
+        return currentMove[i][j] && neighbors==2;
     }
     
     private void repain(){ //Could've used @Override to override JFrame's repaint()...
