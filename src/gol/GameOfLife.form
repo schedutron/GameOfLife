@@ -56,6 +56,10 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseClicked"/>
+        <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanel1ComponentResized"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
