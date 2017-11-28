@@ -5,7 +5,7 @@ import java.util.TimerTask;
 import java.awt.Image; //to avoid stutter
 import java.awt.Graphics;
 import java.awt.Color;
-
+import javax.swing.SwingUtilities;
 
 public class GameOfLife extends javax.swing.JFrame {
 
@@ -113,6 +113,11 @@ public class GameOfLife extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -184,7 +189,8 @@ public class GameOfLife extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        currentMove = new boolean[hei][wid];
+        repain();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -199,6 +205,15 @@ public class GameOfLife extends javax.swing.JFrame {
         offScrGraph = offScrImg.getGraphics();
         repain();
     }//GEN-LAST:event_jPanel1ComponentResized
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int i = evt.getY() * hei / jPanel1.getHeight();
+        int j = evt.getX() * wid / jPanel1.getWidth();
+        
+        if(SwingUtilities.isLeftMouseButton(evt)) currentMove[i][j] = true;
+        else currentMove[i][j] = false;
+        repain();
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
