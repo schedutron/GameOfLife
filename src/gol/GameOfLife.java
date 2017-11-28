@@ -19,9 +19,42 @@ public class GameOfLife extends javax.swing.JFrame {
         initComponents();
         offScrImg = createImage(jPanel1.getWidth(), jPanel1.getHeight());
         offScrGraph = offScrImg.getGraphics();
+        Timer time = new Timer();
+        TimerTask task = new TimerTask(){
+            public void run(){
+            
+            }
+        };
+        
+        time.scheduleAtFixedRate(task, 0, 100);
         repain();
     }
+    
+    private int getNeighbors(int i, int j){
+        int num = 0
+        if (j > 0){
+            if (i > 0)  if (currentMove[i-1][j-1])  num++;
+            if (i < hei-1) if (currentMove[i+1][j-1])  num++;
+            if(currentMove[i][j-1])  num++;
+        }
+        
+        if (j < wid-1){
+            if(i>0)  if (currentMove[i-1][j+1]) num++;
+            if(i < hei-1) if(currentMove[i+1][j+1])  num++;
+            if(currentMove[i][j+1])  num++;
+        }
+        
+        if(i>0)  if(currentMove[i-1][j])  num++;
+        if(i < hei-1)  if(currentMove[i+1][j])  num++;
+        
+        return num;
+    }
 
+    public boolean decide(int i, int j){
+        int neighbors = getNeighbors(i, j);
+        return true;
+    }
+    
     private void repain(){ //Could've used @Override to override JFrame's repaint()...
         offScrGraph.setColor(jPanel1.getBackground());
         offScrGraph.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
@@ -128,7 +161,10 @@ public class GameOfLife extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        play = !play;
+        if (play) jButton1.setText("Pause");
+        else jButton1.setText("Play");
+        repain();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
