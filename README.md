@@ -3,4 +3,4 @@
 
 ![Demo](GOL.gif)
 
-To build, just clone this repository and open it in an IDE like NetBeans or Eclipse and simply run ("play") button. Otherwise, compile it on the command line and run the corresponding build for [GOL.java](src/gol/GOL.java).
+To build, just clone this repository and open it in an IDE like NetBeans or Eclipse and simply run the project (click the "play" button). Otherwise, compile it on the command line and run the corresponding build for [GOL.java](src/gol/GOL.java).
