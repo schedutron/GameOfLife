@@ -25,8 +25,20 @@ public class GameOfLife extends javax.swing.JFrame {
     private void repain(){ //Could've used @Override to override JFrame's repaint()...
         offScrGraph.setColor(jPanel1.getBackground());
         offScrGraph.fillRect(0, 0, jPanel1.getWidth(), jPanel1.getHeight());
-        offScrGraph.setColor(Color.BLACK);
+        offScrGraph.setColor(Color.YELLOW);
         
+        for(int i=0; i<hei; i++){
+            for(int j=0; j<wid; j++){
+                if(currentMove[i][j]){
+                    int y = i * jPanel1.getHeight() / hei;
+                    int x = j * jPanel1.getWidth() / wid;
+                    
+                    offScrGraph.fillRect(x, y, jPanel1.getWidth()/wid, jPanel1.getHeight()/hei);
+                }
+            }
+        }
+        
+        offScrGraph.setColor(Color.BLACK);
         for(int i=1; i<hei; i++){
             int y = i * jPanel1.getHeight() / hei;
             offScrGraph.drawLine(0, y, jPanel1.getWidth(), y);
@@ -124,6 +136,9 @@ public class GameOfLife extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        int i = evt.getY() * hei / jPanel1.getHeight();
+        int j = evt.getX() * wid / jPanel1.getWidth();
+        currentMove[i][j] = !currentMove[i][j];
         repain();
     }//GEN-LAST:event_jPanel1MouseClicked
 
