@@ -9,7 +9,7 @@ import javax.swing.SwingUtilities;
 
 public class GameOfLife extends javax.swing.JFrame {
 
-    final int wid = 200, hei = 100;
+    final int wid = 160, hei = 100;
     boolean[][] currentMove = new boolean[hei][wid], nextMove = new boolean[hei][wid];
     boolean play;
     Image offScrImg;
