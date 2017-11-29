@@ -1,7 +1,7 @@
 # Game of Life!
 [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) is a mathematical model (more precisely, a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton)) devised by mathematician [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) in 1970. I created this applet using Java's AWT and Swing frameworks, while going through [this YouTube tutorial](http://www.youtube.com/watch?v=9p9IMB7-kZg).
 
-Following is the demo GIF: (may take some time to load; be patient!)
+Following is the demo GIF (may take some time to load; be patient!):
 
 ![Demo](GOL.gif)
 
